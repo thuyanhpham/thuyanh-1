@@ -1,19 +1,19 @@
 package com.example.demo.controllers;
 
-import javax.naming.Context;
-
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy.Content;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.controllers.Employee.EmployeeRepository;
 
 @SpringBootApplication
-
+@Repository
 public class app {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(app.class, args);
-		EmployeeRepository employeeRepository = Context.getName(EmployeeRepository.class);
+		 EmployeeRepository employeeRepository = context.getBean(EmployeeRepository.class);
+
 		
 		employeeRepository.findAll()
 							.forEach(System.out::println);
@@ -21,9 +21,6 @@ public class app {
 		Employee employee = employeeRepository.save(new Employee());
 		
 		System.out.println("Employee vừa có ID: " + employee.getName());
-		String employeeId = employee.getName();
-		
-		
 		employeeRepository.save(employee);
 		
 		
