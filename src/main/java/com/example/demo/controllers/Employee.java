@@ -1,5 +1,17 @@
 package com.example.demo.controllers;
 
+import java.io.Serializable;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Repository
 public class Employee {
 
 	private String name;
@@ -39,6 +51,25 @@ public class Employee {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public class Employeeinfor implements Serializable {
+	    private static final long serialVersionUID = -297553281792804396L;
+
+	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	    private Long id;
+
+	    @Column(name = "name")
+	    private String name;
+
+	    private String email;
+	    private String phone;
+	    private String add;
+	}
+	
+	public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+		
 	}
 	
 }
