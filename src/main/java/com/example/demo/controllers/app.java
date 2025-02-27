@@ -5,7 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.controllers.Employee.EmployeeRepository;
+import com.example.demo.repo.EmployeeRepository;
+
+
 
 @SpringBootApplication
 @Repository

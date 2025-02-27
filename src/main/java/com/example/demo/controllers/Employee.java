@@ -2,17 +2,28 @@ package com.example.demo.controllers;
 
 import java.io.Serializable;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.hibernate.annotations.Table;
 import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@SuppressWarnings("removal")
+@Table(appliesTo = "employee")
+@Data
 @Repository
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
-
+	@Id
+private Long id;
 	private String name;
 	private String email;
 	private String phone;
@@ -65,10 +76,6 @@ public class Employee {
 	    private String email;
 	    private String phone;
 	    private String add;
-	}
-	
-	public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-		
 	}
 	
 }
