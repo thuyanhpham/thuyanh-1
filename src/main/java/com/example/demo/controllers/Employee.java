@@ -14,11 +14,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@SuppressWarnings("removal")
-@Table(appliesTo = "employee")
 @Data
 @Repository
 @Entity
+
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
