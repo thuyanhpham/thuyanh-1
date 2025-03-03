@@ -11,11 +11,11 @@ import com.example.demo.controllers.EmployeeService;
 import com.example.demo.repo.EmployeeRepository;
 
 @Service
-
-public abstract class EmployeeServiceImpl implements EmployeeService {
+public  class EmployeeServiceImpl implements EmployeeService {
 	
 	private EmployeeRepository employeeRepository;
 
+	@Override
 	public List<Employee> getAllEmployee() {
 		List<Employee> listEmployee = employeeRepository.findAll();
 		return listEmployee;
@@ -38,4 +38,12 @@ public abstract class EmployeeServiceImpl implements EmployeeService {
 		}
 		return false;
 	}
+
+	@Override
+	public Employee create(Employee employee) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }

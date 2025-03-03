@@ -2,13 +2,14 @@ package com.example.demo.controllers;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface EmployeeService {
 
 	public Employee create(Employee employee);
 
-	static List<Employee> getAllEmployee() {
-		return null;
-	}
+	 List<Employee> getAllEmployee() ;
 
 	static Employee getEmployee(long id) {
 		return null;
