@@ -53,6 +53,7 @@ public class LoginController {
 	}
 	
 	//Add new employee
+
 	@PostMapping("employee/add")
 	public ResponseEntity<?> addEmployee (@RequestBody Employee std) {
 		Employee dataStd = EmployeeService.addEmployee(std);
@@ -72,12 +73,13 @@ public class LoginController {
 			dataStd.setName(std.getName());
 			dataStd.setEmail(std.getEmail());
 			dataStd.setPhone(std.getPhone());
-			dataStd.setAdd(std.getAdd());
+			dataStd.setAddress(std.getAddress());
 			EmployeeService.updateEmployee(dataStd);
 			return new ResponseEntity<Employee>(dataStd, HttpStatus.OK);
 		}
 	}
 	
+
 	@DeleteMapping("employee/{id}")
 	public ResponseEntity<?> deleteEmployee(@PathVariable(ID3) long id) {
 		Employee dataStd = EmployeeService.getEmployee(id);
@@ -91,4 +93,5 @@ public class LoginController {
 		}
 	}
 	
+
 }

@@ -1,14 +1,8 @@
 package com.example.demo.controllers;
 
-import java.io.Serializable;
-
-import org.hibernate.annotations.Table;
 import org.springframework.stereotype.Repository;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,22 +19,22 @@ private Long id;
 	private String name;
 	private String email;
 	private String phone;
-	private String add;
+	private String address;
 	
 	public Employee() {}
 
-	public Employee(String name, String email, String phone, String add) {
+	public Employee(String name, String email, String phone, String address) {
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
-		this.add = add;
+		this.address = address;
 	}
 	
-	public String getAdd() {
-		return add;
+	public String getAddress() {
+		return address;
 	}
-	public void setAdd(String add) {
-		this.add = add;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public String getPhone() {
 		return phone;
@@ -60,5 +54,6 @@ private Long id;
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+
 }

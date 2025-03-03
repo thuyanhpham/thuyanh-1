@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset = "UTF-8">
+	<title>Quản Lý Nhân viên</title>
+</head>
+
+<body>
+	<h2>Quản Lý Nhân Viên</h2>
+	<form th:action="@{/employee/save" th:object="${employee}" method="post">
+		<table>
+			<tr>
+				<td>Họ và tên: </td>
+				<td><input th:field="*{name}"/></td>
+			</tr>
+			<tr>
+				<td>Email: </td>
+				<td><input th:field="*{email}"/></td>
+			</tr>
+			<tr>
+				<td>Số điện thoại: </td>
+				<td><input th:field="*{phone}"/></td>
+			</tr>
+			<tr>
+				<td>Địa chỉ: </td>
+				<td><input th:field="*{add}"/></td>
+			</tr>
+		</table>
+		<button type="submit">Lưu Nhân Viên</button>
+		
+	</form>
+	
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Họ và tên</th>
+			<th>Email</th>
+			<th>Số điện thoại</th>
+			<th>Địa chỉ</th>
+		</tr>
+		<tr th:each="employee : ${employees}">
+			<td th:text="${employee.id"></td>
+			<td th:text="${employee.name"></td>
+			<td th:text="${employee.email"></td>
+			<td th:text="${employee.phone"></td>
+			<td th:text="${employee.address"></td>
+			<td>
+				<a th:href="@{/employee/edit/{id}(id=${employee.id})}">Sửa</a>
+				<a th:href="@{/employee/delete/{id}(id=${employee.id})}" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+			</td>
+		</tr>
+	</table>	
+	
+	
+
+</body>
+</html>
