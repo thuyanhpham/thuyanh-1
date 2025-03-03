@@ -20,7 +20,6 @@ import com.example.demo.repo.EmployeeRepository;
 
 @Controller
 @RequestMapping()
-
 public class LoginController {
 	
 	private static final String ID3 = "id";
@@ -49,7 +48,7 @@ public class LoginController {
 	@PostMapping("/saveEmployee")
 	public ResponseEntity<String> saveEmployee(@RequestBody Employee employee) {
 		repo.save(employee);
-		return new ResponseEntity<String>("Employee Saved" HttpStatus.OK);
+		return new ResponseEntity<String>("Employee Saved", HttpStatus.OK);
 	}
 	
 	@GetMapping("employee/all")
