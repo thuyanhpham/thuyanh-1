@@ -21,13 +21,10 @@ import com.example.demo.repo.EmployeeRepository;
 @Controller
 @RequestMapping()
 public class LoginController {
+	private EmployeeRepository employeeRepository;
 	
 	private static final String ID3 = "id";
 	private static final String ID2 = ID3;
-
-	public Employee create(Employee employee) {
-		return null;
-	}
 	
 	@GetMapping("/")
 	public String addEmployee(Model model) {
@@ -41,9 +38,6 @@ public class LoginController {
 		modelMap.addAttribute("employee", employee);
 		return "result";
 	}
-	
-	@Autowired
-	private EmployeeRepository repo;
 	
 	@PostMapping("/saveEmployee")
 	public ResponseEntity<String> saveEmployee(@RequestBody Employee employee) {

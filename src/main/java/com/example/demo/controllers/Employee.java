@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Repository
 @Entity
-
 @NoArgsConstructor
 @AllArgsConstructor
 public class Employee {
@@ -60,21 +59,6 @@ private Long id;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public class Employeeinfor implements Serializable {
-	    private static final long serialVersionUID = -297553281792804396L;
-
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
-
-	    @Column(name = "name")
-	    private String name;
-
-	    private String email;
-	    private String phone;
-	    private String add;
 	}
 	
 }

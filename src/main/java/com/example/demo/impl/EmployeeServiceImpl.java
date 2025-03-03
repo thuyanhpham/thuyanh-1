@@ -13,7 +13,7 @@ import com.example.demo.repo.EmployeeRepository;
 @Service
 
 public abstract class EmployeeServiceImpl implements EmployeeService {
-	@Autowired
+	
 	private EmployeeRepository employeeRepository;
 
 	public List<Employee> getAllEmployee() {
