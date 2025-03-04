@@ -3,7 +3,6 @@ package com.example.demo.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.Repository;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.controllers.Employee;
@@ -11,7 +10,7 @@ import com.example.demo.controllers.EmployeeService;
 import com.example.demo.repo.EmployeeRepository;
 
 @Service
-public abstract  class EmployeeServiceImpl implements EmployeeService {
+public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
@@ -41,8 +40,12 @@ public abstract  class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee create(Employee employee) {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void save(Employee employee) {
+		
 	}
 	
 	

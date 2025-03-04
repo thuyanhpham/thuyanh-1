@@ -109,7 +109,7 @@ public class LoginController {
 
 	}
 	
-	@GetMapping("/add")
+	@GetMapping("/employee/add")
 	public String showAddEmployeeForm(Model model) {
 		model.addAttribute("newEmployee", new Employee());
 		return "addEmployee";
