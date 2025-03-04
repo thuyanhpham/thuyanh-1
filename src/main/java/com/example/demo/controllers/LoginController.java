@@ -117,7 +117,7 @@ public class LoginController {
 	
 	@PostMapping("/employee/save")
 	public String SaveEmployee(@ModelAttribute Employee employee) {
-		EmployeeService.save(employee);
+		employeeService.save(employee);
 		return "redirect:/list";
 	}
 	
