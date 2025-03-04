@@ -19,7 +19,7 @@
 			<th>Địa chỉ</th>
 			<th>Ghi chú</th>
 		</tr>
-		<tr th:each="list : ${listEmployee}">
+		<tr th:each="employee : ${listEmployee}">
 			<td th:text="${employee.id}"></td>
 			<td th:text="${employee.name}"></td>
 			<td th:text="${employee.email}"></td>
