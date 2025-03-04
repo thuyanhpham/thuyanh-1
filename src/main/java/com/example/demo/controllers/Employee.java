@@ -3,19 +3,19 @@ package com.example.demo.controllers;
 import org.springframework.stereotype.Repository;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Repository
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 public class Employee {
 	@Id
-private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
 	private String name;
 	private String email;
 	private String phone;
@@ -53,14 +53,6 @@ private Long id;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 

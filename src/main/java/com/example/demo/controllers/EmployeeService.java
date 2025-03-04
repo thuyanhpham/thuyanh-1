@@ -31,11 +31,8 @@ public interface EmployeeService {
 		return false;
 	}
 
-	public static void save(Employee employee) {
-		
-	}
+	public void save(Employee employee);
 
 	public void deleteEmployeeById(Long id);
-	
 	
 }
