@@ -7,27 +7,27 @@
 
 <body>
 	<h2>Thêm Nhân Viên</h2>
-	<form th:action="@{/employee/save" th:object="${employee}" method="post">
+	<form th:action="@{/employee/save}" th:object="${Employee}" method="post">
 		<table>
 			<tr>
 				<td>Họ và tên: </td>
-				<td><input th:field="*{name}"/></td>
+				<td><input type="text" th:field="*{name}"/></td>
 			</tr>
 			<tr>
 				<td>Email: </td>
-				<td><input th:field="*{email}"/></td>
+				<td><input type="email" th:field="*{email}"/></td>
 			</tr>
 			<tr>
 				<td>Số điện thoại: </td>
-				<td><input th:field="*{phone}"/></td>
+				<td><input type="text" th:field="*{phone}"/></td>
 			</tr>
 			<tr>
 				<td>Địa chỉ: </td>
-				<td><input th:field="*{add}"/></td>
+				<td><input type="text" th:field="*{address}"/></td>
 			</tr>
 		</table>
 		<button type="submit">Lưu</button>
-		<a href="/employee">Hủy</a>
+		<a th:href="employee">Hủy</a>
 	</form>
 	
 	

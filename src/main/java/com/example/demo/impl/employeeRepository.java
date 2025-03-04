@@ -8,5 +8,7 @@ import com.example.demo.controllers.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 
+	Employee save(Long id);
+
 
 }

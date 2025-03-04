@@ -8,23 +8,23 @@
 </head>
 <body>
 	
-	<form action="/employee/update" method="post">
+	<form th:action="@{/employee/update}" th:object="${Employee}" method="post">
 		<table>
 			<tr>
 				<td>Họ và tên: </td>
-				<td><input th:field="*{name}"/></td>
+				<td><input type="text" th:field="*{name}"/></td>
 			</tr>
 			<tr>
 				<td>Email: </td>
-				<td><input th:field="*{email}"/></td>
+				<td><input type="email" th:field="*{email}"/></td>
 			</tr>
 			<tr>
 				<td>Số điện thoại: </td>
-				<td><input th:field="*{phone}"/></td>
+				<td><input type="text" th:field="*{phone}"/></td>
 			</tr>
 			<tr>
 				<td>Địa chỉ: </td>
-				<td><input th:field="*{add}"/></td>
+				<td><input type="text" th:field="*{address}"/></td>
 			</tr>
 			
 		</table>
