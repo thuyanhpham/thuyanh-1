@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import com.example.demo.repo.EmployeeRepository;
 @RequestMapping()
 public class LoginController {
 	private EmployeeRepository employeeRepository;
+	@Autowired
 	private EmployeeService employeeService;
 
 	private static final String ID3 = "id";
@@ -98,5 +100,25 @@ public class LoginController {
 		return "list";
 
 	}
+	
+	@GetMapping("/detail/{id}")
+	public String viewDetail(Model model, @PathVariable(name = "id") Long id) {
+		java.util.List<Employee> listEmployee = employeeService.getAllEmployee();
+		model.addAttribute("listEmployee", listEmployee);
+		return "list";
 
+	}
+	
+	@GetMapping("/add")
+	public String showAddEmployeeForm(Model model) {
+		model.addAttribute("newEmployee", new Employee());
+		return "addEmployee";
+	}
+	
+	@PostMapping("/employee/save")
+	public String SaveEmployee(@ModelAttribute Employee employee) {
+		employeeService.save(employee);
+		return "list";
+	}
+	
 }

@@ -26,4 +26,8 @@ public interface EmployeeService {
 	static boolean delEmployee(long id) {
 		return false;
 	}
+
+	public void save(Employee employee);
+
+	public void save(Employee employee);
 }

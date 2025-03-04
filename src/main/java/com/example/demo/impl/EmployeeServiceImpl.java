@@ -11,8 +11,8 @@ import com.example.demo.controllers.EmployeeService;
 import com.example.demo.repo.EmployeeRepository;
 
 @Service
-public  class EmployeeServiceImpl implements EmployeeService {
-	
+public abstract  class EmployeeServiceImpl implements EmployeeService {
+	@Autowired
 	private EmployeeRepository employeeRepository;
 
 	@Override
