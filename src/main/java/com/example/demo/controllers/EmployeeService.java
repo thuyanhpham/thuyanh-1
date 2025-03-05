@@ -21,7 +21,6 @@ public interface EmployeeService {
 	static Employee addEmployee(Employee employee) {
 		return null;
 	}
-
 	 Employee updateEmployee(Employee employee);
 
 	static boolean delEmployee(long id) {
@@ -35,6 +34,7 @@ public interface EmployeeService {
 	Employee findById(Long id);
 
 	List<Employee> getAllEmployee(String keyword);
+
 
 	
 }

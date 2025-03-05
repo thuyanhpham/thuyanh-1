@@ -83,10 +83,10 @@ public class LoginController {
 		
 	}
 	
-    @GetMapping
+    @GetMapping("/employee/search")
     public String listEmployee(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
         List<Employee> employee = employeeService.getAllEmployee(keyword);
-        model.addAttribute("employee", employee);
+        model.addAttribute("listEmployee", employee);
         model.addAttribute("keyword", keyword);
         return "list";
     }

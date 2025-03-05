@@ -9,7 +9,7 @@
 <body>
 	
 	<form th:action="@{/employee/update}" th:object="${Employee}" method="post">
-	<input type="text" th:field="*{id}"/ hidden>
+		<input type="hidden" th:field="*{id}"/>
 		<table>
 			<tr>
 				<td>Họ và tên: </td>
@@ -31,6 +31,7 @@
 		</table>
 		
 		<button type="submit">Cập Nhật</button>
+		<a th:href="@{/list}">Hủy</a>
 	</form>
 </body>
 </html>
