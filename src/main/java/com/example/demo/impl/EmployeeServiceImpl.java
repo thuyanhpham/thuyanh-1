@@ -59,4 +59,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	        }
 	        return employeeRepository.findAll();
 	    }
+
+	@Override
+	public Employee findById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
