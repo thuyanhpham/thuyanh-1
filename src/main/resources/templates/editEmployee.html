@@ -9,6 +9,7 @@
 <body>
 	
 	<form th:action="@{/employee/update}" th:object="${Employee}" method="post">
+	<input type="text" th:field="*{id}"/ hidden>
 		<table>
 			<tr>
 				<td>Họ và tên: </td>

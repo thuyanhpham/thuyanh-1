@@ -49,7 +49,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void deleteEmployeeById(Long id) {
-		
+		employeeRepository.deleteById(id);
+	}
+
+
+
+	@Override
+	public Employee findById(Long id) {
+		// TODO Auto-generated method stub
+		return employeeRepository.findById(id).get();
 	}
 	
 	

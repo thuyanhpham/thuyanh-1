@@ -4,13 +4,23 @@
 
 <meta charset = "UTF-8">
 <title>List Employee Information</title>
-
+<link rel="stylesheet" href="employee.css">
 </head>
 <body>
 	
 	<h2>Danh sách Nhân Viên</h2>
-	<a href="/employee/add">Thêm nhân viên</a>
 	<table>
+		<tr>
+			<td class="add"><a href="/employee/add">Thêm nhân viên</a></td>
+			<td class="search">
+				<form th:action="@{/employee/search}" method="get">
+				<input type="text" name="keyword" placeholder="Nhập tên nhân viên">
+				<button type="submit">Tìm Kiếm</button>
+				</form>
+			</td>	
+		</tr>
+	</table>
+	<table class="main">
 		<tr>
 			<th>ID</th>
 			<th>Họ và tên</th>
@@ -26,8 +36,8 @@
 			<td th:text="${employee.phone}"></td>
 			<td th:text="${employee.address}"></td>
 			<td >
-				<a th:href="@{/detail/{id}(id=${employee.id})}">Sửa</a>
-				<a th:href="@{/delete/{id}(id=${employee.id})}">Xóa</a>
+				<a th:href= "@{/employee/edit/{id}(id=${employee.id})}" >Sửa</a>
+				<a th:href= "@{/delete/{id}(id=${employee.id})}">Xóa</a>
 			</td>
 		</tr>
 	</table>

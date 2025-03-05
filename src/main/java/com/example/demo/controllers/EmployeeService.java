@@ -22,9 +22,7 @@ public interface EmployeeService {
 		return null;
 	}
 
-	static Employee updateEmployee(Long employee) {
-		return null;
-	}
+	 Employee updateEmployee(Employee employee);
 
 	static boolean delEmployee(long id) {
 
@@ -34,5 +32,9 @@ public interface EmployeeService {
 	public void save(Employee employee);
 
 	public void deleteEmployeeById(Long id);
-	
+	Employee findById(Long id);
+
+	public static com.example.demo.controllers.List<Employee> searchEmployee(String keyword) {
+	return employeeRepository.findByNameContainingIgnoreCase(keyword);
+	}
 }

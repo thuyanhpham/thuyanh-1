@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -30,58 +33,6 @@ public class LoginController {
 		return "result";
 	}
 
-//	@PostMapping("/saveEmployee")
-//	public ResponseEntity<String> saveEmployee(@RequestBody Employee employee) {
-//		repo.save(employee);
-//		return new ResponseEntity<String>("Employee Saved", HttpStatus.OK);
-//	}
-//
-//	@GetMapping("employee/all")
-//	public ResponseEntity<java.util.List<Employee>> getAll() {
-//		java.util.List<Employee> allEmployee = employeeService.getAllEmployee();
-//		java.util.List<Employee> listEmployee = allEmployee;
-//		return new ResponseEntity<java.util.List<Employee>>(listEmployee, HttpStatus.OK);
-//	}
-//
-//	// Add new employee
-//
-//	@PostMapping("employee/add")
-//	public ResponseEntity<?> addEmployee(@RequestBody Employee std) {
-//		Employee dataStd = EmployeeService.addEmployee(std);
-//		if (dataStd != null) {
-//			return new ResponseEntity<Employee>(dataStd, HttpStatus.OK);
-//		}
-//		return new ResponseEntity<APIMessages>(HttpStatus.NOT_FOUND);
-//	}
-//
-//	@PutMapping("employee/{id}")
-//	public ResponseEntity<?> updateEmployee(@PathVariable(ID2) long id, @RequestBody Employee std) {
-//		Employee dataStd = EmployeeService.getEmployee(id);
-//		if (dataStd == null) {
-//			APIMessages apiErr = new APIMessages();
-//			return new ResponseEntity<Object>(apiErr, HttpStatus.NOT_FOUND);
-//		} else {
-//			dataStd.setName(std.getName());
-//			dataStd.setEmail(std.getEmail());
-//			dataStd.setPhone(std.getPhone());
-//			dataStd.setAddress(std.getAddress());
-//			EmployeeService.updateEmployee(dataStd);
-//			return new ResponseEntity<Employee>(dataStd, HttpStatus.OK);
-//		}
-//	}
-//
-//	@DeleteMapping("employee/{id}")
-//	public ResponseEntity<?> deleteEmployee(@PathVariable(ID3) long id) {
-//		Employee dataStd = EmployeeService.getEmployee(id);
-//		if (dataStd == null) {
-//			APIMessages apiErr = new APIMessages();
-//			return new ResponseEntity<APIMessages>(apiErr, HttpStatus.NOT_FOUND);
-//		} else {
-//			boolean delEmployee = EmployeeService.delEmployee(id);
-//			APIMessages apiErr = new APIMessages();
-//			return new ResponseEntity<APIMessages>(apiErr, HttpStatus.OK);
-//		}
-//	}
 
 	@GetMapping("/list")
 	public String listemployee(Model model) {
@@ -113,14 +64,14 @@ public class LoginController {
 	
 	@GetMapping("/employee/edit/{id}")
 	public String showEditForm(@PathVariable("id") Long id, Model model) {
-		Employee employee = EmployeeService.updateEmployee(id);
+		Employee employee = employeeService.findById(id);
 		model.addAttribute("Employee", employee);
 		return "editEmployee";
 	}
 	
 	@PostMapping("/employee/update")
-	public String updateEmployee(@ModelAttribute Long employee, RedirectAttributes redirectAttributes) {
-		EmployeeService.updateEmployee(employee);
+	public String updateEmployee(@ModelAttribute Employee employee, RedirectAttributes redirectAttributes) {
+		employeeService.updateEmployee(employee);
 		redirectAttributes.addFlashAttribute("message","Cập nhật thành công!");
 		return "redirect:/list";
 	}
@@ -131,5 +82,17 @@ public class LoginController {
 		return "redirect:/list";
 		
 	}
+	
+    @GetMapping
+    public String listEmployee(@RequestParam(value = "keyword", required = false) String keyword, Model model) {
+        List<Employee> employee;
+        if (keyword != null && !keyword.isEmpty()) {
+            employee = (List<Employee>) EmployeeService.searchEmployee(keyword);
+        } else {
+            employee = employeeService.getAllEmployee();
+        }
+        model.addAttribute("employee", employee);
+        return "list";
+    }
 	
 }

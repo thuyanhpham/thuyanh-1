@@ -1,15 +1,10 @@
 package com.example.demo.controllers;
 
-import org.springframework.stereotype.Repository;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Data;
 
-@Data
-@Repository
 @Entity
 public class Employee {
 	@Id
@@ -29,6 +24,13 @@ public class Employee {
 		this.address = address;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+		
+	}
 	public String getAddress() {
 		return address;
 	}
