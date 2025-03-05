@@ -34,7 +34,7 @@ public interface EmployeeService {
 	public void deleteEmployeeById(Long id);
 	Employee findById(Long id);
 
-	public static com.example.demo.controllers.List<Employee> searchEmployee(String keyword) {
-	return employeeRepository.findByNameContainingIgnoreCase(keyword);
-	}
+	List<Employee> getAllEmployee(String keyword);
+
+	
 }

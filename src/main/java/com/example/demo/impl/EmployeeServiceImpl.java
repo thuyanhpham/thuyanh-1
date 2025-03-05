@@ -52,13 +52,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 		employeeRepository.deleteById(id);
 	}
 
-
-
-	@Override
-	public Employee findById(Long id) {
-		// TODO Auto-generated method stub
-		return employeeRepository.findById(id).get();
-	}
-	
-	
+	 @Override
+	    public List<Employee> getAllEmployee(String keyword) {
+	        if (keyword != null && !keyword.isEmpty()) {
+	            return employeeRepository.findByNameContainingIgnoreCase(keyword);
+	        }
+	        return employeeRepository.findAll();
+	    }
 }
