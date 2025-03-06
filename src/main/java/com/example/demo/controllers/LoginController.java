@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.entity.Employee;
+import com.example.demo.impl.EmployeeService;
+
 @Controller
 @RequestMapping()
 public class LoginController {

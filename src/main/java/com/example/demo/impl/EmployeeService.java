@@ -1,11 +1,12 @@
-package com.example.demo.controllers;
+package com.example.demo.impl;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.impl.EmployeeRepository;
+import com.example.demo.entity.Employee;
+import com.example.demo.repo.EmployeeRepository;
 
 @Service
 public interface EmployeeService {

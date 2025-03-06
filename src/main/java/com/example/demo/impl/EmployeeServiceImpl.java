@@ -5,8 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.controllers.Employee;
-import com.example.demo.controllers.EmployeeService;
+import com.example.demo.entity.Employee;
 import com.example.demo.repo.EmployeeRepository;
 
 @Service
@@ -55,7 +54,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 @Override
 	    public List<Employee> getAllEmployee(String keyword) {
 	        if (keyword != null && !keyword.isEmpty()) {
-	            return employeeRepository.findByNameContainingIgnoreCase(keyword);
+	            return (List<Employee>) employeeRepository.findByNameContainingIgnoreCase(keyword);
 	        }
 	        return employeeRepository.findAll();
 	    }
