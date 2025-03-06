@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 
 import com.example.demo.entity.Employee;
-import com.example.demo.entity.Person;
 
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long>{
@@ -20,9 +19,4 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long>{
 	public interface AddressRepository extends JpaRepository<Address, Long> {
 		
 	}
-	public interface PersonRepository extends JpaRepository<Person, Long> {
-		
-	}
-
-
 }

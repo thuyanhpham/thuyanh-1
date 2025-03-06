@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class address {
+public class Address {
 
 	@Id
 	@GeneratedValue
@@ -27,7 +27,7 @@ public class address {
 	private String province;
 	
 	@OneToMany(mappedBy ="address", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Person> persons = new ArrayList<>();
+	private List<Employee> employees = new ArrayList<>();
 
 
 }
