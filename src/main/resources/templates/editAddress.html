@@ -10,7 +10,7 @@
 
 	<h2>Chỉnh Sửa Địa Chỉ</h2>
 	
-	<form th:action="@{/address/update}" th:object="${address}" method="post">
+	<form th:action="@{/address/update/{id}(id=${address.id})}" th:object="${address}" method="post">
 		<input type="hidden" th:field="*{id}"/>
 		<table>
 			<tr>

@@ -4,6 +4,7 @@
 
 	<meta charset = "UTF-8">
 	<title>Thêm Địa Chỉ</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 	
@@ -13,16 +14,50 @@
 		<table>
 			<tr>
 				<td>Thành phố: </td>
-				<td><input type="text" name="city" required></td>
+				<td><input id="city" type="text" name="city" required></td>
 			</tr>
 			<tr>
-				<td>Email: </td>
-				<td><input type="text" name="province" required></td>
+				<td>province: </td>
+				<td><input id="province" type="text" name="province" required></td>
 			</tr>
 		</table>
 		
-		<button type="submit">Lưu</button>
+		<button id="save" type="button">Lưu</button>
 		<a href="/address">Hủy</a>
+		<button id="load-du-lieu">Load</button>
 	</form>
+	<script type="text/javascript">
+	 $(document).ready(function() {
+	        $('#load-du-lieu').click(function(e) {
+	            e.preventDefault();
+	            $.ajax({
+	                url: '/api/address',
+	                type: 'GET',
+	                dataType: 'json',
+	            }).done(function(ketqua) {
+	                console.log(ketqua);
+	            });
+	            
+	        });
+	        
+	        $('#save').click(function(e) {
+	            e.preventDefault();
+	            $.ajax({
+	                url: '/api/address',
+	                type: 'POST',
+	                contentType: 'application/json',  
+	                dataType: 'json',
+	                data: JSON.stringify({
+	                	id: 6,
+	                    city: $("#city").val(),
+	                    province: $("#province").val()
+	                }),
+	            }).done(function(ketqua) {
+	                console.log(ketqua);
+	            });
+	            
+	        });
+	    });	
+	</script>
 </body>
 </html>

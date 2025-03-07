@@ -4,6 +4,7 @@
 
 	<meta charset="UTF-8">
 	<title>Danh sách địa chỉ</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -29,6 +30,25 @@
 	</table>
 	
 	<a href="/address/add">Thêm mới</a>
+	<script type="text/javascript">
+	 $('#delete').click(function(e) {
+         e.preventDefault();
+         let addressId = 6;
+         $.ajax({
+             url: '/api/address' +addressId,
+             type: 'DELETE',
+             contentType: 'application/json',  
+             dataType: 'json',
+             success: function(response) {
+                 console.log("Xóa thành công!", response);
+             },
+             error: function(xhr, status, error) {
+                 console.log("Lỗi khi xóa:", error);
+             }
+         });
+         
+     });
+	</script>
 
 </body>
 </html>

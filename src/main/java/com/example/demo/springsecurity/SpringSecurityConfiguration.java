@@ -18,8 +18,9 @@ public class SpringSecurityConfiguration {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((authz) -> authz
-					.requestMatchers("/**").hasRole("employee")
-					.requestMatchers("/admin/**").hasRole("ADMIN")
+					//.requestMatchers("/**").hasRole("USER")
+					//.requestMatchers("/admin/**").hasRole("ADMIN")
+					.requestMatchers("/**", "/address/**").permitAll()
 					)
 			.formLogin(formLogin -> formLogin.permitAll());
 		return http.build();
@@ -28,7 +29,7 @@ public class SpringSecurityConfiguration {
 	@Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
 		//cho phép truy cập url '/api' và các file static css,js
-        return (web) -> web.ignoring().requestMatchers("/api/**", "/static/**");
+        return (web) -> web.ignoring().requestMatchers("/api/**", "/static/**", "/address/**");
     }
 
 	//bỏ

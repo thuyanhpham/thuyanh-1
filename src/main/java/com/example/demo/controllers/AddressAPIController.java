@@ -29,6 +29,13 @@ public class AddressAPIController {
         List<AddressDTO> list = addressService.getAll();
         return ResponseEntity.ok(list);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<AddressDTO> getAddress(@PathVariable Long id) {
+    	Address address = addressService.getById(id) ;
+    	AddressDTO addressDTO = new AddressDTO();
+    	addressDTO.setCity(address.getCity());
+    	return ResponseEntity.ok(addressDTO);
+    }
     
     @PostMapping
     public ResponseEntity<Address> address(@RequestBody Address address) {
