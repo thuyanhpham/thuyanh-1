@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +18,9 @@ public class Employee {
 	private String email;
 	private String phone;
 	private String address;
+	@ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address1;
 	
 	public Employee() {}
 
@@ -57,9 +62,6 @@ public class Employee {
 	public void setName(String name) {
 		this.name = name;
 	}
-	@ManyToOne
-    @JoinColumn(name = "address_id")
-    private Address address1;
 
 
 }

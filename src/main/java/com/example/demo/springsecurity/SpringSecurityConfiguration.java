@@ -2,10 +2,9 @@ package com.example.demo.springsecurity;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -22,13 +21,20 @@ public class SpringSecurityConfiguration {
 					.requestMatchers("/**").hasRole("employee")
 					.requestMatchers("/admin/**").hasRole("ADMIN")
 					)
-			.formLogin(withDefaults());
+			.formLogin(formLogin -> formLogin.permitAll());
 		return http.build();
 	}
 
-	private Customizer<FormLoginConfigurer<HttpSecurity>> withDefaults() {
-		return null;
-	}
+	@Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+		//cho phép truy cập url '/api' và các file static css,js
+        return (web) -> web.ignoring().requestMatchers("/api/**", "/static/**");
+    }
+
+	//bỏ
+	// private Customizer<FormLoginConfigurer<HttpSecurity>> withDefaults() {
+	// 	return null;
+	// }
 
 	@Bean
 	public UserDetailsManager userDetailsService() {

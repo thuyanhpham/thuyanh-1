@@ -1,0 +1,34 @@
+package com.example.demo.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.dto.AddressDTO;
+import com.example.demo.entity.Address;
+import com.example.demo.repo.AddressRepository;
+
+@Service
+public class AddressServiceImpl implements AddressService {
+    @Autowired
+    private AddressRepository addressRepository;
+
+    @Override
+    public List<AddressDTO> getAll() {
+        List<Address> listEntity = addressRepository.findAll();
+        List<AddressDTO> listDTO = new ArrayList<>();
+
+        // convert from Entity to DTO class
+        listEntity.forEach(entity -> {
+            AddressDTO dto = new AddressDTO();
+            dto.setId(entity.getId());
+            dto.setCity(entity.getCity());
+            dto.setProvince(entity.getProvince());
+            listDTO.add(dto);
+        });
+        return listDTO;
+    }
+
+}
