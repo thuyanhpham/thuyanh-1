@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<meta charset = "UTF-8">
+	<title>Thêm Địa Chỉ</title>
+</head>
+<body>
+	
+	<h2>Thêm Địa Chỉ</h2>
+	
+	<form action="/address/save" method="post">
+		<table>
+			<tr>
+				<td>Thành phố: </td>
+				<td><input type="text" name="city" required></td>
+			</tr>
+			<tr>
+				<td>Email: </td>
+				<td><input type="text" name="province" required></td>
+			</tr>
+		</table>
+		
+		<button type="submit">Lưu</button>
+		<a href="/address">Hủy</a>
+	</form>
+</body>
+</html>

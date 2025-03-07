@@ -30,5 +30,25 @@ public class Address {
 	@OneToMany(mappedBy ="address1", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Employee> employees = new ArrayList<>();
 
+	public Object getId() {
+		return null;
+	}
+
+	public Object getCity() {
+		return null;
+	}
+
+	public Object getProvince() {
+		return null;
+	}
+
+	public void setCity(Object city2) {
+		
+	}
+
+	public void setProvince(Object province2) {
+		
+	}
+
 
 }

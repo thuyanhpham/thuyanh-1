@@ -11,4 +11,13 @@ public class AddressDTO {
     private Long id;
 	private String city;
 	private String province;
+	public void setId(Object id2) {
+		
+	}
+	public void setCity(Object city2) {
+		
+	}
+	public void setProvince(Object province2) {
+		
+	}
 }

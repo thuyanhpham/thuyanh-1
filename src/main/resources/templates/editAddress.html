@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<meta charset = "UTF-8">
+	<title>Chỉnh Sửa Địa Chỉ</title>
+	
+</head>
+<body>
+
+	<h2>Chỉnh Sửa Địa Chỉ</h2>
+	
+	<form th:action="@{/address/update}" th:object="${address}" method="post">
+		<input type="hidden" th:field="*{id}"/>
+		<table>
+			<tr>
+				<td>Thành Phố: </td>
+				<td><input type="text" th:field="*{city}" required/></td>
+			</tr>
+			<tr>
+				<td>Tỉnh: </td>
+				<td><input type="text" th:field="*{province}" required/></td>
+			</tr>
+		</table>
+		
+		<button type="submit">Lưu thay đổi</button>
+		<a th:href="@{/address}">Hủy</a>
+	</form>
+</body>
+</html>
