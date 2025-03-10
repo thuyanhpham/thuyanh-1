@@ -15,6 +15,7 @@
             
         }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 	
@@ -36,7 +37,7 @@
 			<tr>
 				<td>Địa chỉ: </td>
 				<td>
-					<select id="editaddressId"></select>		
+					<select id="addressId" th:field="*{address1.id}" ></select>		
 				</td>
 			</tr>
 			
@@ -46,40 +47,17 @@
 		<a th:href="@{/list}">Hủy</a>
 	</form>
 	<script>
-	    $(document).ready(function() {
-	        let employeeId = 1;
-	        $.get("/employee/" + employeeId, function(data) {
-	            $("#editName").val(data.name);
-	            $("#editEmail").val(data.email);
-	            $("#editPhone").val(data.phone);
-	            $.get("/api/address/", function(address) {
-	                let dropdown = $("#editAddressId");
-	                dropdown.empty();
-	                $.each(addresses, function(index, address) {
-	                    let selected = (address.id === data.address.id) ? "selected" : "";
-	                    dropdown.append(`<option value="${address.id}" ${selected}>${address.city}, ${address.province}</option>`);
-	                });
+	  $(document).ready(function() {
+	        $.get("/api/address", function(data) {
+	            let dropdown = $("#addressId");
+	            dropdown.empty();
+	            $.each(data, function(index, address) {
+	                dropdown.append(`<option value="${address.id}">${address.city}, ${address.province}</option>`);
 	            });
 	        });
-	
-	        $("#editEmployeeForm").submit(function(e) {
-	            e.preventDefault();
-	            $.ajax({
-	                url: "/employee/" + employeeId,
-	                type: "PUT",
-	                contentType: "application/json",
-	                data: JSON.stringify({
-	                    name: $("#editName").val(),
-	                    email: $("#editEmail").val(),
-	                    phone: $("#editPhone").val(),
-	                    addressId: $("#editAddressId").val()
-	                }),
-	                success: function(response) {
-	                    alert("Cập nhật thành công!");
-	                }
-	            });
-	        });
-	    });
+	        
+	    });  
+	   
 	</script>
 </body>
 </html>

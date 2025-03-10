@@ -34,7 +34,7 @@
 			<td th:text="${employee.name}"></td>
 			<td th:text="${employee.email}"></td>
 			<td th:text="${employee.phone}"></td>
-			<td th:text="${address != null ? address.city + ', ' + address.province : 'Không có địa chỉ'}"></td>
+			<td th:text="${employee.address1 != null ? employee.address1.city + ', ' + employee.address1.province : 'Không có địa chỉ'}"></td>
 			<td >
 				<a th:href= "@{/employee/edit/{id}(id=${employee.id})}" >Sửa</a>
 				<a th:href= "@{/delete/{id}(id=${employee.id})}">Xóa</a>

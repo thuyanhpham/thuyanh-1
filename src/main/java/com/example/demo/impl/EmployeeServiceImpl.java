@@ -30,6 +30,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	
 	public Employee updateEmployee(Employee employee) {
+		if(employee.getAddress1() != null) {
+			Address address = addressRepository.findById(employee.getAddress1().getId()).get();
+			employee.setAddress1(address);
+		}
 		employee = employeeRepository.save(employee);
 		return employee;
 	}
@@ -49,6 +53,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	public void save(Employee employee) {
+		if(employee.getAddress1() != null) {
+			Address address = addressRepository.findById(employee.getAddress1().getId()).get();
+			employee.setAddress1(address);
+		}
 		employeeRepository.save(employee);
 	}
 
@@ -111,7 +119,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee updateEmployee(Long id, EmployeeInfor employeeInfor) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
