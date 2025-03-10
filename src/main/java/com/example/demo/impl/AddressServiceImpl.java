@@ -59,9 +59,16 @@ public class AddressServiceImpl implements AddressService {
 		addressRepository.deleteById(id);
 	}
 
+	public List<Address> getAllAddresses() {
+	        return addressRepository.findAll();
+	    }
 	@Override
 	public Address findById(Long id) {
-		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Address> getAllAddress() {
 		return null;
 	}
 

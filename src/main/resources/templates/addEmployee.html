@@ -14,12 +14,6 @@
             
         }
 
-        option {
-            padding: 8px;
-            font-size: 16px;
-            background-color: white;
-            color: black;
-        }
     </style>
 </head>
 
@@ -42,17 +36,24 @@
 			<tr>
 				<td>Địa chỉ: </td>
 				<td>
-					<select id="adress" name="address.id">
-						<option th:each="address : ${address}" th:value="${address.id}" th:text="${address.city + ', ' + address.province"></option>
-					</select>
+					<select id="addressId"></select>
 				</td>
 			</tr>
 		</table>
+		
 		<button type="submit">Lưu</button>
 		<a th:href="@{/list}">Hủy</a>
 	</form>
-	
-	
-
+	<script>
+    $(document).ready(function() {
+        $.get("/api/employee/address", function(data) {
+            let dropdown = $("#addressId");
+            dropdown.empty();
+            $.each(data, function(index, address) {
+                dropdown.append(`<option value="${address.id}">${address.city}, ${address.province}</option>`);
+            });
+        });
+    }
+    </script>
 </body>
 </html>

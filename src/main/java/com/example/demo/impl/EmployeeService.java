@@ -19,9 +19,7 @@ public interface EmployeeService {
 		return null;
 	}
 
-	static Employee addEmployee(Employee employee) {
-		return null;
-	}
+	public Employee addEmployee(Employee employee);
 	 Employee updateEmployee(Employee employee);
 
 	static boolean delEmployee(long id) {

@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -59,7 +60,6 @@ public class LoginController {
 	@GetMapping("/employee/add")
 	public String showAddEmployeeForm(Model model) {
 		model.addAttribute("Employee", new Employee());
-		model.addAttribute("address", AddressService.getAllAddress());
 		return "addEmployee";
 	}
 	
@@ -73,8 +73,6 @@ public class LoginController {
 	public String showEditForm(@PathVariable("id") Long id, Model model) {
 		Employee employee = employeeService.findById(id);
 		model.addAttribute("Employee", employee);
-		Address address = AddressService.findById(id);
-		model.addAttribute("address", address );
 		return "editEmployee";
 	}
 	

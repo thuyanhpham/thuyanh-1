@@ -18,4 +18,6 @@ public interface AddressService {
 	void delete(Long id);
 
 	Address findById(Long id);
+
+	List<Address> getAllAddress();
 }
