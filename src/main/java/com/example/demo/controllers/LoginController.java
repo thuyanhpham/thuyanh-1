@@ -66,6 +66,7 @@ public class LoginController {
 	@GetMapping("/employee/add")
 	public String showAddEmployeeForm(Model model) {
 		model.addAttribute("Employee", new Employee());
+		model.addAttribute("address", addressService.getAll());
 		return "addEmployee";
 	}
 	
@@ -79,6 +80,7 @@ public class LoginController {
 	public String showEditForm(@PathVariable("id") Long id, Model model) {
 		Employee employee = employeeService.findById(id);
 		model.addAttribute("Employee", employee);
+		model.addAttribute("address", addressService.getAll());
 		return "editEmployee";
 	}
 	
@@ -104,32 +106,4 @@ public class LoginController {
         return "list";
     }
     
-//    @GetMapping
-//    public ResponseEntity<List<Employee>> getAllEmployees() {
-//        return ResponseEntity.ok(employeeService.getAllEmployee());
-//    }
-//    
-//    @GetMapping("/address")
-//    public ResponseEntity<List<Address>> getAllAddress() {
-//        return ResponseEntity.ok(addressService.getAllAddress());
-//    }
-//    
-//    @GetMapping("/{id}")
-//    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-//        return ResponseEntity.ok(EmployeeService.getEmployee(id));
-//    }
-//
-//    @PostMapping
-//    public ResponseEntity<Employee> addEmployee(@RequestBody EmployeeInfor employeeInfor) {
-//        Employee employee = employeeService.addEmployee(employeeInfor);
-//        return ResponseEntity.ok(employee);
-//    }
-//    
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody EmployeeInfor employeeInfor) {
-//        Employee updatedEmployee = employeeService.updateEmployee(id, employeeInfor);
-//        return ResponseEntity.ok(updatedEmployee);
-//    }
-    
-	
 }
