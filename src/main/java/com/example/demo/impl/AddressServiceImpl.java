@@ -59,4 +59,11 @@ public class AddressServiceImpl implements AddressService {
 		addressRepository.deleteById(id);
 	}
 
+	@Override
+	public Address findById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 }

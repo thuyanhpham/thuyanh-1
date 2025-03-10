@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.dto.AddressDTO;
+import com.example.demo.entity.Address;
 import com.example.demo.entity.Employee;
+import com.example.demo.impl.AddressService;
 import com.example.demo.impl.EmployeeService;
 
 @Controller
@@ -56,6 +59,7 @@ public class LoginController {
 	@GetMapping("/employee/add")
 	public String showAddEmployeeForm(Model model) {
 		model.addAttribute("Employee", new Employee());
+		model.addAttribute("address", AddressService.getAllAddress());
 		return "addEmployee";
 	}
 	
@@ -69,6 +73,8 @@ public class LoginController {
 	public String showEditForm(@PathVariable("id") Long id, Model model) {
 		Employee employee = employeeService.findById(id);
 		model.addAttribute("Employee", employee);
+		Address address = AddressService.findById(id);
+		model.addAttribute("address", address );
 		return "editEmployee";
 	}
 	

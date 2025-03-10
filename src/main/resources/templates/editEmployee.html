@@ -4,7 +4,24 @@
 
 	<meta charset = "UTF-8">
 	<title>Chỉnh Sửa Thông Tin Nhân Viên</title>
-	
+	<style>
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #000000;
+            border-radius: 3px;
+            background-color: #f8f9fa;
+            font-size: 16px;
+            
+        }
+
+        option {
+            padding: 8px;
+            font-size: 16px;
+            background-color: white;
+            color: black;
+        }
+    </style>
 </head>
 <body>
 	
@@ -23,10 +40,18 @@
 				<td>Số điện thoại: </td>
 				<td><input type="text" th:field="*{phone}"/></td>
 			</tr>
-			<!--<tr>
+			<tr>
 				<td>Địa chỉ: </td>
-				<td><input type="text" th:field="*{address}"/></td>
-			</tr>-->
+				<td>
+					<select id="address" name="address.id">
+    					<option th:each="addr : ${addresses}" 
+            					th:value="${addr.id}" 
+            					th:text="${addr.city + ', ' + addr.province}" 
+           	 					th:selected="${addr.id == employee.address.id}">
+    					</option>
+					</select>		
+				</td>
+			</tr>
 			
 		</table>
 		

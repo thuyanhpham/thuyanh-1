@@ -39,4 +39,6 @@ public class AddressDTO {
 		this.province = province;
 	}
 	
+
+	
 }

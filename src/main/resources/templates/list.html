@@ -26,7 +26,7 @@
 			<th>Họ và tên</th>
 			<th>Email</th>
 			<th>Số điện thoại</th>
-		<th>Địa chỉ</th>	
+			<th>Địa chỉ</th>	
 			<th>Ghi chú</th>
 		</tr>
 		<tr th:each="employee : ${listEmployee}">
@@ -34,7 +34,7 @@
 			<td th:text="${employee.name}"></td>
 			<td th:text="${employee.email}"></td>
 			<td th:text="${employee.phone}"></td>
-			<td th:text="${employee.address}"></td>
+			<td th:text="${address != null ? address.city + ', ' + address.province : 'Không có địa chỉ'}"></td>
 			<td >
 				<a th:href= "@{/employee/edit/{id}(id=${employee.id})}" >Sửa</a>
 				<a th:href= "@{/delete/{id}(id=${employee.id})}">Xóa</a>

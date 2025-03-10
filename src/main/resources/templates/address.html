@@ -23,7 +23,7 @@
 			<td th:text="${address.province}"></td>
 			<td>
 				<a th:href="@{/address/edit/{id}(id=${address.id})}">Sửa</a>
-				<a th:href="@{/address/delete/{id}(id=${address.id})}">Xóa</a>
+				<a id="delete" href="#" th:data-id="${address.id}">Xóa</a>
 			</td>
 			
 		</tr>
@@ -33,9 +33,9 @@
 	<script type="text/javascript">
 	 $('#delete').click(function(e) {
          e.preventDefault();
-         let addressId = 6;
+         let clickedId = $(this).attr('data-id');
          $.ajax({
-             url: '/api/address' +addressId,
+             url: '/api/address/' +clickedId,
              type: 'DELETE',
              contentType: 'application/json',  
              dataType: 'json',
