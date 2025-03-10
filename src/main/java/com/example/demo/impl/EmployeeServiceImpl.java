@@ -5,14 +5,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.Address;
 import com.example.demo.entity.Employee;
 import com.example.demo.entity.EmployeeInfor;
+import com.example.demo.repo.AddressRepository;
 import com.example.demo.repo.EmployeeRepository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private AddressRepository addressRepository;
 
 	@Override
 	public List<Employee> getAllEmployee() {
@@ -69,6 +74,39 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee addEmployee(EmployeeInfor employeeInfor) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+//	@Override
+//	public Employee updateEmployee(Long id, EmployeeInfor employeeInfor) {
+//		Employee employee = employeeRepository.findById(id)
+//                .orElseThrow(() -> new RuntimeException("Nhân viên không tồn tại!"));
+//
+//        employee.setName(employeeInfor.getName());
+//        employee.setEmail(employeeInfor.getEmail());
+//
+//        Address address = AddressRepository.findById(employeeInfor.getAddressId())
+//                                           .orElseThrow(() -> new RuntimeException("Địa chỉ không tồn tại!"));
+//        employee.setAddress(address);
+//
+//        return employeeRepository.save(employee);
+//	}
+//
+//	public EmployeeRepository getEmployeeRepository() {
+//		return employeeRepository;
+//	}
+//	public Employee addEmployee1(EmployeeInfor employeeInfor) {
+//        Employee employee = new Employee();
+//        employee.setName(employeeInfor.getName());
+//        employee.setEmail(employeeInfor.getEmail());
+//        Address address = addressRepository.findById(employee.getAddress())
+//                .orElseThrow(() -> new RuntimeException("Địa chỉ không tồn tại!"));
+//        employee.setAddress(address);
+//
+//        return employeeRepository.save(employee);
+//	}
+
+	public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+		this.employeeRepository = employeeRepository;
 	}
 
 	@Override

@@ -20,5 +20,16 @@ public class EmployeeInfor implements Serializable {
 
 	    private String email;
 	    private String phone;
-	    private Long addressId;
+	
+		public String getEmail() {
+			return null;
+		}
+
+		public String getName() {
+			return null;
+		}
+
+		public Long getAddressId() {
+			return null;
+		}
 }

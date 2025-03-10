@@ -41,8 +41,8 @@ public class Employee {
 	public String getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress(String address2) {
+		this.address = address2;
 	}
 	public String getPhone() {
 		return phone;
