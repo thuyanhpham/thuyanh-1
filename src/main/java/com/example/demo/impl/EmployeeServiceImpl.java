@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Employee;
+import com.example.demo.entity.EmployeeInfor;
 import com.example.demo.repo.EmployeeRepository;
 
 @Service
@@ -62,6 +63,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public Employee findById(Long id) {
 		return employeeRepository.findById(id).get();
+	}
+
+	@Override
+	public Employee addEmployee(EmployeeInfor employeeInfor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Employee updateEmployee(Long id, EmployeeInfor employeeInfor) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

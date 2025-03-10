@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.demo.dto.AddressDTO;
 import com.example.demo.entity.Address;
 import com.example.demo.entity.Employee;
+import com.example.demo.entity.EmployeeInfor;
 import com.example.demo.impl.AddressService;
 import com.example.demo.impl.EmployeeService;
 
@@ -26,6 +29,9 @@ import com.example.demo.impl.EmployeeService;
 public class LoginController {
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	private AddressService addressService;
 
 	@GetMapping("/")
 	public String addEmployee(Model model) {
@@ -97,5 +103,33 @@ public class LoginController {
         model.addAttribute("keyword", keyword);
         return "list";
     }
+    
+//    @GetMapping
+//    public ResponseEntity<List<Employee>> getAllEmployees() {
+//        return ResponseEntity.ok(employeeService.getAllEmployee());
+//    }
+//    
+//    @GetMapping("/address")
+//    public ResponseEntity<List<Address>> getAllAddress() {
+//        return ResponseEntity.ok(addressService.getAllAddress());
+//    }
+//    
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+//        return ResponseEntity.ok(EmployeeService.getEmployee(id));
+//    }
+//
+//    @PostMapping
+//    public ResponseEntity<Employee> addEmployee(@RequestBody EmployeeInfor employeeInfor) {
+//        Employee employee = employeeService.addEmployee(employeeInfor);
+//        return ResponseEntity.ok(employee);
+//    }
+//    
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody EmployeeInfor employeeInfor) {
+//        Employee updatedEmployee = employeeService.updateEmployee(id, employeeInfor);
+//        return ResponseEntity.ok(updatedEmployee);
+//    }
+    
 	
 }

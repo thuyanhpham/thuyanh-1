@@ -19,7 +19,7 @@
 
 <body>
 	<h2>Thêm Nhân Viên</h2>
-	<form th:action="@{/employee/save}" th:object="${Employee}" method="post">
+	<form id="employeeForm" th:action="@{/employee/save}" th:object="${Employee}" method="post">
 		<table>
 			<tr>
 				<td>Họ và tên: </td>
@@ -46,14 +46,31 @@
 	</form>
 	<script>
     $(document).ready(function() {
-        $.get("/api/employee/address", function(data) {
+        $.get("/api/address/", function(data) {
             let dropdown = $("#addressId");
             dropdown.empty();
             $.each(data, function(index, address) {
                 dropdown.append(`<option value="${address.id}">${address.city}, ${address.province}</option>`);
             });
         });
-    }
+        
+        $("#employeeForm").submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: "/employee",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    name: $("#name").val(),
+                    email: $("#email").val(),
+                    addressId: $("#addressId").val() 
+                }),
+                success: function(response) {
+                    alert("Thêm nhân viên thành công!");
+                }
+            });
+        });
+    });
     </script>
 </body>
 </html>

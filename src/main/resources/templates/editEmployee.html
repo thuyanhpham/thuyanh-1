@@ -14,18 +14,11 @@
             font-size: 16px;
             
         }
-
-        option {
-            padding: 8px;
-            font-size: 16px;
-            background-color: white;
-            color: black;
-        }
     </style>
 </head>
 <body>
 	
-	<form th:action="@{/employee/update}" th:object="${Employee}" method="post">
+	<form id="editAddressForm" th:action="@{/employee/update}" th:object="${Employee}" method="post">
 		<input type="hidden" th:field="*{id}"/>
 		<table>
 			<tr>
@@ -43,13 +36,7 @@
 			<tr>
 				<td>Địa chỉ: </td>
 				<td>
-					<select id="address" name="address.id">
-    					<option th:each="addr : ${addresses}" 
-            					th:value="${addr.id}" 
-            					th:text="${addr.city + ', ' + addr.province}" 
-           	 					th:selected="${addr.id == employee.address.id}">
-    					</option>
-					</select>		
+					<select id="editaddressId"></select>		
 				</td>
 			</tr>
 			
@@ -58,5 +45,41 @@
 		<button type="submit">Cập Nhật</button>
 		<a th:href="@{/list}">Hủy</a>
 	</form>
+	<script>
+	    $(document).ready(function() {
+	        let employeeId = 1;
+	        $.get("/employee/" + employeeId, function(data) {
+	            $("#editName").val(data.name);
+	            $("#editEmail").val(data.email);
+	            $("#editPhone").val(data.phone);
+	            $.get("/api/address/", function(address) {
+	                let dropdown = $("#editAddressId");
+	                dropdown.empty();
+	                $.each(addresses, function(index, address) {
+	                    let selected = (address.id === data.address.id) ? "selected" : "";
+	                    dropdown.append(`<option value="${address.id}" ${selected}>${address.city}, ${address.province}</option>`);
+	                });
+	            });
+	        });
+	
+	        $("#editEmployeeForm").submit(function(e) {
+	            e.preventDefault();
+	            $.ajax({
+	                url: "/employee/" + employeeId,
+	                type: "PUT",
+	                contentType: "application/json",
+	                data: JSON.stringify({
+	                    name: $("#editName").val(),
+	                    email: $("#editEmail").val(),
+	                    phone: $("#editPhone").val(),
+	                    addressId: $("#editAddressId").val()
+	                }),
+	                success: function(response) {
+	                    alert("Cập nhật thành công!");
+	                }
+	            });
+	        });
+	    });
+	</script>
 </body>
 </html>

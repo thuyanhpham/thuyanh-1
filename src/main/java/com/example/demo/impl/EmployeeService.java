@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Employee;
+import com.example.demo.entity.EmployeeInfor;
 import com.example.demo.repo.EmployeeRepository;
 
 @Service
@@ -19,7 +20,7 @@ public interface EmployeeService {
 		return null;
 	}
 
-	public Employee addEmployee(Employee employee);
+	public Employee addEmployee(EmployeeInfor employeeInfor);
 	 Employee updateEmployee(Employee employee);
 
 	static boolean delEmployee(long id) {
@@ -33,6 +34,8 @@ public interface EmployeeService {
 	Employee findById(Long id);
 
 	List<Employee> getAllEmployee(String keyword);
+
+	public Employee updateEmployee(Long id, EmployeeInfor employeeInfor);
 
 	
 }
