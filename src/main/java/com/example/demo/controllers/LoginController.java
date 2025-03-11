@@ -78,7 +78,11 @@ public class LoginController {
 	}
 	
 	@PostMapping("/employee/save")
-	public String SaveEmployee(@ModelAttribute Employee employee) {
+	public String SaveEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			model.addAttribute("address", addressService.getAll());
+			return "addEmployee";
+		}
 		employeeService.save(employee);
 		return "redirect:/list";
 	}
@@ -114,7 +118,7 @@ public class LoginController {
     }
     
     @PostMapping
-    public ResponseEntity<String> createEmployee(@Valid @RequestBody EmployeeInfor employee, BindingResult result) {
+    public ResponseEntity<String> createEmployee(@Valid @RequestBody Employee employee, BindingResult result) {
         if (result.hasErrors()) {
             return ResponseEntity.badRequest().body(result.getAllErrors().toString());
         }

@@ -8,19 +8,32 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Valid
+	@NotEmpty(message = "Tên không được để trống!")
 	private String name;
+	
+	@Valid
+	@NotEmpty(message = "Email không được để trống!")
+    @Email(message = "Email không hợp lệ")
 	private String email;
+	
+	@Valid
+	@NotEmpty(message = "Thiếu số điện thoại")
 	private String phone;
 	private String address;
 	@ManyToOne
     @JoinColumn(name = "address_id")
+	@NotNull(message = "Vui lòng chọn địa chỉ!")
     private Address address1;
 	
 	public Employee() {}
