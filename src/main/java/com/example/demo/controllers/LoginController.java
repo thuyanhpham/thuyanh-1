@@ -78,10 +78,9 @@ public class LoginController {
 	}
 	
 	@PostMapping("/employee/save")
-	public String SaveEmployee(@Valid @ModelAttribute Employee employee, BindingResult result, Model model) {
+	public String SaveEmployee(@Valid @ModelAttribute("Employee") Employee employee, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			model.addAttribute("address", addressService.getAll());
-			model.addAttribute("Employee", employee);
 			return "addEmployee";
 		}
 		employeeService.save(employee);

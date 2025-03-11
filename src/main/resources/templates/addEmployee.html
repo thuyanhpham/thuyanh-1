@@ -16,39 +16,44 @@
 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/js/validation.js" type="text/javascript"></script>
+     
 </head>
 
 <body>
 	<h2>Thêm Nhân Viên</h2>
-	<form id="employeeForm" th:action="@{/employee/save}" th:object="${Employee}" method="post">
+	<form id="employeeForm" th:action="@{/employee/save}" th:object="${Employee}"  method="post">
 		<table>
 			<tr>
 				<td>Họ và tên: </td>
 				<td>
-					<input type="text" th:field="*{name}"/>
+					<input type="text" th:field="*{name}" autocomplete="name"/>
 					<span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 				</td>
 			</tr>
 			<tr>
 				<td>Email: </td>
 				<td>
-					<input type="email" th:field="*{email}"/>
+					<input type="email" th:field="*{email}" autocomplete="email"/>
 					<span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 				</td>
 			</tr>
 			<tr>
 				<td>Số điện thoại: </td>
 				<td>
-					<input type="text" th:field="*{phone}"/>
+					<input type="text" th:field="*{phone}" autocomplete="tel"/>
 					<span class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
 				</td>
 			</tr>
 			<tr>
 				<td>Địa chỉ: </td>
 				<td>
-					<select id="addressId" th:field="*{address1.id}">
+					<select id="addressId" th:field="*{address1.id}" autocomplete="address-level1">
 						<option value="">-- Chọn Địa Chỉ --</option>
+						<option th:each="address : ${address1}" th:value="${address.id}" th:text="${address.city} + ', ' + ${address.province}"></option>
 					</select>
+					<span class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address1}" ></span>
 				</td>
 			</tr>
 		</table>
@@ -56,18 +61,6 @@
 		<button type="submit">Lưu</button>
 		<a th:href="@{/list}">Hủy</a>
 	</form>
-	<script>
-	    $(document).ready(function() {
-	        $.get("/api/address", function(data) {
-	            let dropdown = $("#addressId");
-	            dropdown.empty();
-	            $.each(data, function(index, address) {
-	                dropdown.append(`<option value="${address.id}">${address.city}, ${address.province}</option>`);
-	            });
-	        });
-	        
-	            });
-	        
-    </script>
+	
 </body>
 </html>
