@@ -26,7 +26,7 @@ $(document).ready(function () {
                 required: true,
                 phoneVN: true
             },
-            addressId: {
+            "address1.id": {
                 required: true
             }
         },
@@ -49,6 +49,12 @@ $(document).ready(function () {
         },
         errorPlacement: function (error, element) {
 			console.log("Lỗi tại trường: ", element.attr("name"), "=>", error.text());
+			if (element.is("select")) {
+			        error.insertAfter(element);
+			    } else {
+			        error.insertAfter(element);
+			    }
+
             error.insertAfter(element);
         },
 		invalidHandler: function (event, validator) {
