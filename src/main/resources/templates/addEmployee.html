@@ -26,6 +26,20 @@
 	<form id="employeeForm" th:action="@{/employee/save}" th:object="${Employee}"  method="post">
 		<table>
 			<tr>
+				<td>Username: </td>
+				<td>
+					<input type="text" th:field="*{username}" autocomplete="username"/>
+					<span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>password: </td>
+				<td>
+					<input type="password" th:field="*{password}" autocomplete="password"/>
+					<span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+				</td>
+			</tr>
+			<tr>
 				<td>Họ và tên: </td>
 				<td>
 					<input type="text" th:field="*{name}" autocomplete="name"/>

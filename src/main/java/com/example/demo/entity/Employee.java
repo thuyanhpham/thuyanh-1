@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,9 +35,7 @@ public class Employee {
 	@NotNull(message = "Vui lòng chọn địa chỉ!")
     private Address address1;
 	
-	public Employee() {}
-
-	public Employee(String name, String email, String phone, String address) {
+	public Employee() {
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
@@ -83,6 +80,39 @@ public class Employee {
 
 	public void setAddress1(Address address1) {
 		this.address1 = address1;
+	}
+	
+	@Column(unique = true, nullable = false)
+	private String username;
+	
+	@Column(nullable = false)
+	private String password;
+	
+	@Column(nullable = false)
+	private String role;
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 

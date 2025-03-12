@@ -23,11 +23,18 @@
 			<td>Số điện thoại: </td>
 			<td><input th:field="*{phone}"/></td>
 		</tr>
-		<!--<tr>
+		<!--  <tr>
 			<td>Địa chỉ: </td>
 		<td><input th:field="*{address}"/></td> 	
-		</tr>-->
-		
+		</tr> -->
+		<tr>
+			<td>Username:</td>
+			<td><input type="text" th:field="*{username}" required/></td>
+		</tr>
+		<tr>
+			<td>Password:</td>
+			<td><input type="password" th:field="*{password}" required/></td>
+		</tr>
 		</table>
 		<input type="submit" value="Submit">
 	</form>
