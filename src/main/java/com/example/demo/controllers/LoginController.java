@@ -40,16 +40,16 @@ public class LoginController {
 	}
 
 	@PostMapping("/post")
-	public String post(@RequestParam String username, @RequestParam String password, @ModelAttribute Employee employee, ModelMap modelMap) {
+	public String post(@ModelAttribute Employee employee, ModelMap modelMap) {
 		modelMap.addAttribute("employee", employee);
-		EmployeeService.registerEmployee(username, password);
-		return "login";
+		//EmployeeService.registerEmployee(username, password);
+		return "result";
 	}
 	
-	@GetMapping("/login")
-	public String loginPage(@ModelAttribute Employee employee) {
-		return "login";
-	}
+//	@GetMapping("/login")
+//	public String loginPage(@ModelAttribute Employee employee) {
+//		return "login";
+//	}
 
 
 	@GetMapping("/list")
